@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>XY Kavarna — Swipe cenik</title>
+  <meta name="description" content="Swipe cenik pijač in ponudbe za XY Kavarno." />
+  <style>
+    :root {
+      --bg: #080604;
+      --gold: #c99552;
+      --gold-soft: #e0b372;
+      --text: #fff7ea;
+      --muted: #bda37f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top right, rgba(156, 95, 36, .25), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(204, 144, 68, .14), transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .app {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+      padding: max(14px, env(safe-area-inset-top)) 12px max(16px, env(safe-area-inset-bottom));
+    }
+
+    header {
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    header .eyebrow {
+      color: var(--gold-soft);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(20px, 5vw, 32px);
+      font-weight: 650;
+      letter-spacing: .03em;
+    }
+
+    .redbull {
+      color: var(--gold-soft);
+      font-weight: 700;
+    }
+
+    .carousel-wrap {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      align-items: center;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px calc((100vw - min(92vw, 430px)) / 2) 8px;
+    }
+
+    .carousel::-webkit-scrollbar { display: none; }
+
+    .slide {
+      flex: 0 0 min(92vw, 430px);
+      scroll-snap-align: center;
+      position: relative;
+      border-radius: 24px;
+      filter: drop-shadow(0 18px 42px rgba(0, 0, 0, .55));
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 24px;
+      user-select: none;
+      -webkit-user-drag: none;
+      background: #130d08;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+      z-index: 4;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(224, 179, 114, .45);
+      background: rgba(8, 6, 4, .68);
+      color: var(--gold-soft);
+      font-size: 26px;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-btn:active { scale: .96; }
+    .prev { left: 8px; }
+    .next { right: 8px; }
+
+    footer {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      border: 0;
+      background: rgba(224, 179, 114, .35);
+      padding: 0;
+      cursor: pointer;
+      transition: width .2s ease, background .2s ease;
+    }
+
+    .dot.active {
+      width: 24px;
+      background: var(--gold-soft);
+    }
+
+    .hint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (min-width: 820px) {
+      .app {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .carousel {
+        padding-left: calc((100vw - 430px) / 2);
+        padding-right: calc((100vw - 430px) / 2);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-btn { display: none; }
+      .slide { flex-basis: 94vw; border-radius: 20px; }
+      .slide img { border-radius: 20px; }
+      .carousel { padding-left: 3vw; padding-right: 3vw; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="eyebrow">Red Bull partner</div>
+      <h1>XY Kavarna <span class="redbull">cenik</span></h1>
+    </header>
+
+    <section class="carousel-wrap" aria-label="Swipe cenik">
+      <button class="nav-btn prev" type="button" aria-label="Prejšnja stran">‹</button>
+      <div class="carousel" id="carousel">
+        <article class="slide"><img src="assets/slide-1.png" alt="Cenik stran 1: Najboljša izbira in Red Bull izdelki"></article>
+        <article class="slide"><img src="assets/slide-2.png" alt="Cenik stran 2: Kofein in topli napitki"></article>
+        <article class="slide"><img src="assets/slide-3.png" alt="Cenik stran 3: Prigrizki, brezkofein in žitna kava"></article>
+        <article class="slide"><img src="assets/slide-4.png" alt="Cenik stran 4: Hišni napitki, brezalkoholne pijače in Red Bull izdelki"></article>
+        <article class="slide"><img src="assets/slide-5.png" alt="Cenik stran 5: Spritzi, cocktaili in Red Bull izdelki"></article>
+        <article class="slide"><img src="assets/slide-6.png" alt="Cenik stran 6: Vina in penine"></article>
+        <article class="slide"><img src="assets/slide-7.png" alt="Cenik stran 7: Pivo"></article>
+        <article class="slide"><img src="assets/slide-8.png" alt="Cenik stran 8: Alkoholne pijače in tobačni izdelki"></article>
+      </div>
+      <button class="nav-btn next" type="button" aria-label="Naslednja stran">›</button>
+    </section>
+
+    <footer>
+      <div class="dots" id="dots" aria-label="Navigacija po straneh"></div>
+      <p class="hint">Povlecite levo/desno za ogled cenika</p>
+    </footer>
+  </main>
+
+  <script>
+    const carousel = document.querySelector('#carousel');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsWrap = document.querySelector('#dots');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+
+    let current = 0;
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, slides.length - 1));
+      slides[current].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      updateDots();
+    }
+
+    function updateDots() {
+      [...dotsWrap.children].forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+        dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+      });
+    }
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Pojdi na stran ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) return;
+      current = slides.indexOf(visible.target);
+      updateDots();
+    }, {
+      root: carousel,
+      threshold: [0.55, 0.75, 0.9]
+    });
+
+    slides.forEach(slide => observer.observe(slide));
+    prev.addEventListener('click', () => goTo(current - 1));
+    next.addEventListener('click', () => goTo(current + 1));
+
+    updateDots();
+  </script>
+</body>
+</html>
