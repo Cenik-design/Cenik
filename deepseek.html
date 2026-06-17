@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bar Kiparna - Cenik 2026</title>
+    <style>
+        /* ===== OSNOVA ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d0d1a;
+            color: #eee;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 30px 0 20px;
+            border-bottom: 2px solid #f5c842;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f5c842, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+        .header p {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        .header .redbull-badge {
+            display: inline-block;
+            background: #1a2a3a;
+            color: #f5c842;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid #f5c842;
+            margin-top: 10px;
+        }
+
+        /* ===== ISKANJE ===== */
+        .search-wrap {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .search-wrap input {
+            flex: 1;
+            min-width: 220px;
+            padding: 14px 22px;
+            border-radius: 40px;
+            border: 1px solid #2a3a5e;
+            background: #16213e;
+            color: #fff;
+            font-size: 1.05rem;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .search-wrap input:focus {
+            border-color: #f5c842;
+        }
+        .search-wrap input::placeholder {
+            color: #777;
+        }
+        .search-wrap .filter-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .search-wrap .filter-btns button {
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: 1px solid #2a3a5e;
+            background: transparent;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+        }
+        .search-wrap .filter-btns button:hover,
+        .search-wrap .filter-btns button.active {
+            background: #f5c842;
+            color: #0d0d1a;
+            border-color: #f5c842;
+            font-weight: 600;
+        }
+
+        /* ===== RED BULL POSEBNI RAZDELEK ===== */
+        .redbull-section {
+            background: linear-gradient(145deg, #1a1a2e, #0f1a2a);
+            border: 2px solid #f5c842;
+            border-radius: 24px;
+            padding: 25px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 40px rgba(245, 200, 66, 0.08);
+        }
+        .redbull-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #f5c842;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a3a5e;
+            padding-bottom: 12px;
+        }
+        .redbull-section h2 span {
+            font-size: 2rem;
+        }
+        .redbull-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        /* ===== KARTICE ===== */
+        .item {
+            background: #16213e;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.3s;
+            border: 1px solid #2a3a5e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+        .item img {
+            width: 100%;
+            max-height: 160px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #0f0f1f;
+            padding: 6px;
+            margin-bottom: 10px;
+        }
+        .item .name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 4px 0 2px;
+        }
+        .item .desc {
+            font-size: 0.78rem;
+            color: #999;
+            margin: 2px 0 6px;
+            line-height: 1.3;
+            max-height: 36px;
+            overflow: hidden;
+        }
+        .item .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #4ecdc4;
+            margin: 6px 0;
+        }
+        .item .category-tag {
+            font-size: 0.7rem;
+            color: #aaa;
+            background: #2a3a5e;
+            padding: 3px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        /* Red Bull posebna kartica */
+        .item.redbull {
+            border: 2px solid #f5c842;
+            background: #1a1a2e;
+            position: relative;
+        }
+        .item.redbull::after {
+            content: "⚡ RED BULL";
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #f5c842;
+            color: #0d0d1a;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .item.redbull .price {
+            color: #f5c842;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #f5c842;
+            margin: 35px 0 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a3a5e;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 20px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #888;
+            font-size: 1.3rem;
+            padding: 40px 0;
+            display: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.1rem;
+            }
+            .redbull-section h2 {
+                font-size: 1.4rem;
+            }
+            .grid,
+            .redbull-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            .item img {
+                max-height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🍸 BAR KIPARNA</h1>
+            <p>Cenik 2026</p>
+            <div class="redbull-badge">⚡ Uradni Red Bull partner ⚡</div>
+        </div>
+
+        <!-- ISKANJE + FILTRI -->
+        <div class="search-wrap">
+            <input type="text" id="searchInput" placeholder="🔍 Išči pijačo ali jed..." />
+            <div class="filter-btns">
+                <button class="active" data-filter="vse">Vse</button>
+                <button data-filter="kava">Kava</button>
+                <button data-filter="redbull">Red Bull</button>
+                <button data-filter="cocktail">Cocktail</button>
+                <button data-filter="pivo">Pivo</button>
+                <button data-filter="vino">Vino</button>
+                <button data-filter="brezalkoholno">Brezalkoholno</button>
+            </div>
+        </div>
+
+        <!-- RED BULL POSEBNI RAZDELEK (vedno viden) -->
+        <div class="redbull-section" id="redbullSection">
+            <h2><span>⚡</span> RED BULL IZBIRA</h2>
+            <div class="redbull-grid" id="redbullGrid"></div>
+        </div>
+
+        <!-- OSTALI ARTIKLI -->
+        <div id="mainGridWrap">
+            <div class="section-title" id="mainTitle">Vsi artikli</div>
+            <div class="grid" id="itemGrid"></div>
+        </div>
+
+        <div class="no-results" id="noResults">Ni zadetkov za ta filter.</div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  PODATKI IZ EXCELA (strukturirano)
+        // ============================================================
+        const allItems = [
+            // ---- Red Bull (izpostavljeni) ----
+            { name: "Red Bull Original", category: "Red Bull", price: "3.50", desc: "0,25l", image: "redbull-original.png" },
+            { name: "Red Bull Zero", category: "Red Bull", price: "3.50", desc: "0,25l · brez sladkorja", image: "redbull-zero.png" },
+            { name: "Red Bull Peach Edition", category: "Red Bull", price: "3.50", desc: "0,25l · bela breskev", image: "redbull-peach.png" },
+            { name: "2x Vodka Red Bull", category: "Cocktail", price: "7.90", desc: "2x 0,03l vodka + Red Bull", image: "redbull-original.png" },
+
+            // ---- NAJBOLJŠA IZBIRA ----
+            { name: "Kava + Cedevita", category: "Kava", price: "3.90", desc: "espresso, dolga, z mlekom, cappuccino" },
+            { name: "Kava + Cockta", category: "Kava", price: "3.90", desc: "espresso, dolga, z mlekom, cappuccino" },
+            { name: "XXL kava z okusom Lešnik", category: "Kava", price: "4.50", desc: "0,40l · dvojna kava, mleko, sirup" },
+            { name: "XXL kava z okusom Vanilija", category: "Kava", price: "4.50", desc: "0,40l · dvojna kava, mleko, sirup" },
+            { name: "XXL kava z okusom Kokos", category: "Kava", price: "4.50", desc: "0,40l · dvojna kava, mleko, sirup" },
+            { name: "Limonada z okusom", category: "Brezalkoholno", price: "3.90", desc: "0,30l · lubenica/jagoda/bezeg/pasijonka/mango/kokos" },
+            { name: "Aperol Spritz", category: "Cocktail", price: "6.50", desc: "klasični Aperol Spritz" },
+
+            // ---- KAVA ----
+            { name: "Kava", category: "Kava", price: "1.80", desc: "espresso" },
+            { name: "Macchiato", category: "Kava", price: "1.90", desc: "z mlekom" },
+            { name: "Dolga kava", category: "Kava", price: "1.80" },
+            { name: "Dvojna kava", category: "Kava", price: "3.60" },
+            { name: "Kava z mlekom", category: "Kava", price: "2.10" },
+            { name: "Cappuccino", category: "Kava", price: "2.10" },
+            { name: "Kava s smetano", category: "Kava", price: "2.20" },
+            { name: "Bela kava", category: "Kava", price: "2.50" },
+            { name: "Affogato", category: "Kava", price: "4.50", desc: "kava + sladoled" },
+            { name: "Ledena kava", category: "Kava", price: "4.50", desc: "kava, mleko, sladoled, smetana" },
+            { name: "Chai Latte", category: "Kava", price: "4.00", desc: "Chai tiger spice, mleko" },
+            { name: "Matcha Latte", category: "Kava", price: "4.00" },
+            { name: "Jagodna Matcha Latte", category: "Kava", price: "4.30" },
+
+            // ---- TOPLI NAPITKI ----
+            { name: "Kakav", category: "Topli napitki", price: "2.30" },
+            { name: "Kakav s smetano", category: "Topli napitki", price: "2.40" },
+            { name: "Vroča čokolada", category: "Topli napitki", price: "3.90" },
+            { name: "Vroča čokolada s smetano", category: "Topli napitki", price: "4.00" },
+            { name: "Čaj (sadni/zeliščni/zeleni/črni)", category: "Topli napitki", price: "2.20" },
+            { name: "Čaj z mlekom", category: "Topli napitki", price: "2.30" },
+            { name: "Otroški cappuccino", category: "Topli napitki", price: "1.50" },
+
+            // ---- PRIGRIZKI ----
+            { name: "Toast", category: "Prigrizki", price: "3.30", desc: "piščančja prsa, ementaler, ketchup, majoneza" },
+            { name: "Rogljiček", category: "Prigrizki", price: "3.00", desc: "marmelada / čokolada" },
+            { name: "Sladoled kepica", category: "Prigrizki", price: "2.50", desc: "vanila burbon, smetana" },
+            { name: "Sladoled", category: "Prigrizki", price: "3.20" },
+            { name: "Sladoled Magnum", category: "Prigrizki", price: "3.90" },
+            { name: "Sladoled B&J", category: "Prigrizki", price: "4.70" },
+
+            // ---- BREZKOFEIN ----
+            { name: "Kava (brezkofeinska)", category: "Kava", price: "2.00" },
+            { name: "Macchiato (brezkofeinski)", category: "Kava", price: "2.10" },
+            { name: "Dolga kava (brezkofeinska)", category: "Kava", price: "2.00" },
+            { name: "Kava z mlekom (brezkofeinska)", category: "Kava", price: "2.30" },
+            { name: "Cappuccino (brezkofeinski)", category: "Kava", price: "2.30" },
+            { name: "Kava s smetano (brezkofeinska)", category: "Kava", price: "2.40" },
+            { name: "Bela kava (brezkofeinska)", category: "Kava", price: "2.70" },
+            { name: "Affogato (brezkofeinski)", category: "Kava", price: "4.70", desc: "brezkofeinska kava + sladoled" },
+            { name: "XXL kava z okusom (brezkofeinska)", category: "Kava", price: "4.70", desc: "0,40l · dvojna brezkofeinska, mleko, sirup" },
+            { name: "Ledena kava (brezkofeinska)", category: "Kava", price: "4.70", desc: "brezkofeinska kava, mleko, sladoled, smetana" },
+
+            // ---- ŽITNA KAVA ----
+            { name: "Ječmenova kava", category: "Kava", price: "2.10" },
+            { name: "Ječmenova kava z mlekom", category: "Kava", price: "2.60" },
+            { name: "Ječmenova bela kava", category: "Kava", price: "2.80" },
+
+            // ---- HIŠNI NAPITKI ----
+            { name: "Limonada", category: "Brezalkoholno", price: "3.80", desc: "0,30l" },
+            { name: "Limonada z okusom", category: "Brezalkoholno", price: "3.90", desc: "0,30l · lubenica/jagoda/bezeg/pasijonka/mango/kokos" },
+            { name: "Limonada Frizz", category: "Brezalkoholno", price: "4.00", desc: "0,30l · limonin sok, radenska" },
+            { name: "Hišni beli ledeni čaj", category: "Brezalkoholno", price: "3.50", desc: "0,3l" },
+            { name: "Hišni beli ledeni čaj z okusom", category: "Brezalkoholno", price: "3.60", desc: "0,3l · lubenica/jagoda/bezeg/pasijonka/mango/kokos" },
+            { name: "Bubble TEA", category: "Brezalkoholno", price: "4.50", desc: "0,50l · jagodne kroglice, jagodni pire" },
+
+            // ---- BREZALKOHOLNE STEKLENIČKA ----
+            { name: "Cockta", category: "Brezalkoholno", price: "3.50", desc: "0,275l" },
+            { name: "Cockta Free", category: "Brezalkoholno", price: "3.50", desc: "0,275l" },
+            { name: "Cedevita", category: "Brezalkoholno", price: "2.70" },
+            { name: "Sok Rauch", category: "Brezalkoholno", price: "2.90", desc: "0,20l · jabolko/breskev/jagoda/ananas/pomaranča" },
+            { name: "Coca-Cola", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Coca-Cola Zero", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Fanta", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Schweppes Bitter", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Schweppes Tangerina", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Schweppes Tonic", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Sprite", category: "Brezalkoholno", price: "3.50", desc: "0,25l" },
+            { name: "Ledeni čaj FUZETEA", category: "Brezalkoholno", price: "3.50", desc: "0,50l" },
+            { name: "Romerquelle negazirana", category: "Brezalkoholno", price: "2.90", desc: "0,33l" },
+            { name: "Romerquelle gazirana", category: "Brezalkoholno", price: "2.90", desc: "0,33l" },
+            { name: "Romerquelle gazirana z okusom", category: "Brezalkoholno", price: "2.90", desc: "0,33l" },
+
+            // ---- SPRITZI ----
+            { name: "Aperol Spritz", category: "Cocktail", price: "6.50" },
+            { name: "Limoncello Spritz", category: "Cocktail", price: "6.70" },
+            { name: "Hugo Spritz", category: "Cocktail", price: "6.70" },
+            { name: "Campari Spritz", category: "Cocktail", price: "6.70" },
+            { name: "Jagoda Spritz", category: "Cocktail", price: "6.70" },
+            { name: "Sober Mango Spritz", category: "Cocktail", price: "4.50", desc: "radenska, mango sirup, limonin sok" },
+
+            // ---- COCKTAIL ----
+            { name: "Pink Gin Tonic", category: "Cocktail", price: "6.90", desc: "Pink Gordons, Goldberg hibiskus tonic" },
+            { name: "Hendriks & Tonic", category: "Cocktail", price: "7.20", desc: "Gin Hendriks, Schweppes tonic" },
+            { name: "Cuba Libre", category: "Cocktail", price: "6.60", desc: "Captain rum, limona, Coca-Cola" },
+            { name: "Sex on the beach", category: "Cocktail", price: "6.80", desc: "Vodka, peach tree, ananasov sok, jagodni sirup" },
+            { name: "Long Island Ice Tea", category: "Cocktail", price: "8.30", desc: "Vodka, rum, tequila, gin, limona, Coca-Cola" },
+            { name: "Pina Colada", category: "Cocktail", price: "7.20", desc: "Rum, ananasov sok, smetana, kokos" },
+            { name: "2x Gin Tonic", category: "Cocktail", price: "7.90", desc: "2x 0,03l gin + tonic" },
+
+            // ---- BREZ ALKO ----
+            { name: "Sober Mango Spritz", category: "Brezalkoholno", price: "4.50", desc: "radenska, mango sirup, limonin sok" },
+            { name: "Shirley Temple", category: "Brezalkoholno", price: "4.90", desc: "Sprite, jagodni pire, limona" },
+            { name: "Virgin Pina Colada", category: "Brezalkoholno", price: "4.90", desc: "ananasov sok, kokos, smetana" },
+
+            // ---- VINA ----
+            { name: "Malvazija", category: "Vino", price: "2.70", desc: "0,10l" },
+            { name: "Medana belo", category: "Vino", price: "2.70", desc: "0,10l" },
+            { name: "Rumeni muškat", category: "Vino", price: "3.00", desc: "0,10l" },
+            { name: "Krasna belo", category: "Vino", price: "3.30", desc: "0,10l" },
+            { name: "Cviček", category: "Vino", price: "2.60", desc: "0,10l" },
+            { name: "Cabernet sauvignon", category: "Vino", price: "2.70", desc: "0,10l" },
+            { name: "Medana rdeče", category: "Vino", price: "2.70", desc: "0,10l" },
+            { name: "Krasna rdeče", category: "Vino", price: "3.30", desc: "0,10l" },
+            { name: "Rose Querqus", category: "Vino", price: "3.10", desc: "0,10l" },
+            { name: "Prosecco penina", category: "Vino", price: "3.00", desc: "0,10l" },
+            { name: "Prosecco penina (0,75l)", category: "Vino", price: "21.00", desc: "0,75l" },
+            { name: "Sr. Radgonska penina", category: "Vino", price: "11.00", desc: "0,20l" },
+            { name: "Sr. Radgonska penina (0,75l)", category: "Vino", price: "26.00", desc: "0,75l" },
+
+            // ---- SEZONSKE ZIMSKE ----
+            { name: "Hot Gin", category: "Cocktail", price: "5.50" },
+            { name: "Hot Aperol", category: "Cocktail", price: "5.50" },
+            { name: "Kuhano vino BELO", category: "Vino", price: "3.90" },
+            { name: "Kuhano vino RDEČE", category: "Vino", price: "3.90" },
+
+            // ---- TOČENO PIVO ----
+            { name: "Union (0,20l)", category: "Pivo", price: "2.50", desc: "točeno" },
+            { name: "Union (0,30l)", category: "Pivo", price: "3.10", desc: "točeno" },
+            { name: "Union (0,50l)", category: "Pivo", price: "3.70", desc: "točeno" },
+
+            // ---- USTEKLENIČENO PIVO ----
+            { name: "Laško", category: "Pivo", price: "3.90", desc: "0,50l" },
+            { name: "Bernard (svetlo/janter/temno)", category: "Pivo", price: "4.00", desc: "0,50l" },
+            { name: "Kozel (svetlo/temno)", category: "Pivo", price: "4.20", desc: "0,50l" },
+            { name: "Nefiltrirano svetlo", category: "Pivo", price: "4.00", desc: "0,50l" },
+            { name: "Breezer", category: "Pivo", price: "4.20", desc: "0,27l" },
+            { name: "Somersby jabolko", category: "Pivo", price: "3.40", desc: "0,33l" },
+            { name: "Hard seltzer NORD", category: "Pivo", price: "4.20", desc: "0,33l · guava/bezeg/mango" },
+            { name: "Radler Grenivka", category: "Pivo", price: "3.50", desc: "0,50l" },
+            { name: "Looblanah IPA", category: "Pivo", price: "5.60", desc: "0,50l" },
+            { name: "Looblanah AMERICAN ALE", category: "Pivo", price: "5.60", desc: "0,50l" },
+            { name: "Tektonic MITZI IPA", category: "Pivo", price: "5.30", desc: "0,50l" },
+            { name: "Tektonic NORMAL PALE ALE", category: "Pivo", price: "5.20", desc: "0,50l" },
+            { name: "Heineken", category: "Pivo", price: "3.70", desc: "0,33l" },
+            { name: "Corona", category: "Pivo", price: "4.50", desc: "0,35l" },
+            { name: "Guinness", category: "Pivo", price: "4.70", desc: "0,44l" },
+
+            // ---- BREZ ALKO PIVO ----
+            { name: "Hoppy 0.0", category: "Pivo", price: "3.60", desc: "0,50l" },
+            { name: "Radler Isotonic 0.0", category: "Pivo", price: "3.50", desc: "0,50l" },
+            { name: "Heineken 0.0", category: "Pivo", price: "3.30", desc: "0,33l" },
+            { name: "Malt (ananas/limona)", category: "Pivo", price: "3.30", desc: "0,33l" },
+
+            // ---- ALKOHOLNE PIJAČE ----
+            { name: "Baileys", category: "Alkoholne pijače", price: "4.30", desc: "0,03l" },
+            { name: "Borovničevec", category: "Alkoholne pijače", price: "3.30", desc: "0,03l" },
+            { name: "Campari", category: "Alkoholne pijače", price: "4.30", desc: "0,03l" },
+            { name: "Cynar", category: "Alkoholne pijače", price: "3.80", desc: "0,03l" },
+            { name: "Jägermaister", category: "Alkoholne pijače", price: "4.60", desc: "0,03l" },
+            { name: "Pelinkovec Fructal", category: "Alkoholne pijače", price: "3.60", desc: "0,03l" },
+            { name: "Pelinkovec ANTIQUE", category: "Alkoholne pijače", price: "4.40", desc: "0,03l" },
+            { name: "Amaro Montenegro", category: "Alkoholne pijače", price: "3.70", desc: "0,03l" },
+            { name: "Vodka Smirnoff", category: "Alkoholne pijače", price: "4.20", desc: "0,03l" },
+            { name: "Stock", category: "Alkoholne pijače", price: "3.40", desc: "0,03l" },
+            { name: "Viljamovka Roner", category: "Alkoholne pijače", price: "4.20", desc: "0,03l" },
+            { name: "Tequila", category: "Alkoholne pijače", price: "4.20", desc: "0,03l" },
+            { name: "Gin", category: "Alkoholne pijače", price: "4.20", desc: "0,03l" },
+            { name: "Captain Morgan", category: "Alkoholne pijače", price: "3.80", desc: "0,03l" },
+            { name: "Diplomatico", category: "Alkoholne pijače", price: "5.00", desc: "0,03l" },
+            { name: "Malibu", category: "Alkoholne pijače", price: "3.90", desc: "0,03l" },
+            { name: "Johnnie Walker", category: "Alkoholne pijače", price: "4.30", desc: "0,03l" },
+            { name: "Johnnie Walker Black 12 y.o.", category: "Alkoholne pijače", price: "5.10", desc: "0,03l" },
+            { name: "Canadian Club", category: "Alkoholne pijače", price: "4.20", desc: "0,03l" },
+            { name: "Jameson", category: "Alkoholne pijače", price: "4.50", desc: "0,03l" },
+            { name: "Jack Daniels", category: "Alkoholne pijače", price: "4.70", desc: "0,03l" },
+            { name: "Chivas Regal 12 y.o.", category: "Alkoholne pijače", price: "5.20", desc: "0,03l" },
+            { name: "Lagavulin 16 y.o.", category: "Alkoholne pijače", price: "7.80", desc: "0,03l
