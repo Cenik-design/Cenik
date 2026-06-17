@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XY Kavarna</title>
+<style>
+body{margin:0;font-family:sans-serif;background:linear-gradient(180deg,#0a0a0a,#141414);color:#fff}
+.container{max-width:520px;margin:auto;padding:12px}
+h1{text-align:center;margin:10px 0;color:#ddd}
+nav{position:sticky;top:0;display:flex;overflow:auto;background:#111;padding:8px;gap:8px;z-index:99}
+nav a{color:#ccc;text-decoration:none;font-size:12px;padding:6px 10px;background:#1e1e1e;border-radius:6px}
+.section{margin-top:24px}
+.section h2{border-left:4px solid #999;padding-left:8px}
+.card{display:flex;justify-content:space-between;padding:10px;background:#181818;border-radius:10px;margin:6px 0}
+.highlight{border:1px solid #aaa;box-shadow:0 0 14px rgba(200,200,200,0.4);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 5px #aaa}50%{box-shadow:0 0 20px #aaa}100%{box-shadow:0 0 5px #aaa}}
+.price{color:#ffcc00}
+.search{width:100%;padding:10px;border:none;border-radius:10px;margin:10px 0;background:#222;color:#fff}
+</style>
+</head>
+<body>
+<h1>XY KAVARNA</h1>
+<nav>
+<a href="#rb">Red Bull</a>
+<a href="#coffee">Kava</a>
+<a href="#soft">Brezalko</a>
+<a href="#cocktails">Cocktail</a>
+<a href="#beer">Pivo</a>
+<a href="#wine">Vino</a>
+</nav>
+<div class="container">
+<input class="search" placeholder="🔎 Išči pijačo..." onkeyup="filter()">
+
+<div id="rb" class="section">
+<h2>🔥 Red Bull</h2>
+<div class="card highlight"><div>Red Bull</div><div class="price">3.00€</div></div>
+<div class="card"><div>Red Bull Sugarfree</div><div class="price">3.00€</div></div>
+<div class="card"><div>Red Bull Edition</div><div class="price">3.00€</div></div>
+<div class="card highlight"><div>2x Vodka Red Bull</div><div class="price">7.90€</div></div>
+</div>
+
+<div id="coffee" class="section">
+<h2>☕ Kava</h2>
+<div class="card"><div>Espresso</div><div class="price">1.80€</div></div>
+<div class="card"><div>Macchiato</div><div class="price">1.90€</div></div>
+<div class="card"><div>Dolga</div><div class="price">1.80€</div></div>
+<div class="card"><div>Dvojna</div><div class="price">3.60€</div></div>
+<div class="card"><div>Cappuccino</div><div class="price">2.10€</div></div>
+<div class="card"><div>Ledena kava</div><div class="price">4.50€</div></div>
+<div class="card"><div>Matcha Latte</div><div class="price">4.00€</div></div>
+</div>
+
+<div id="soft" class="section">
+<h2>🥤 Brezalkoholne</h2>
+<div class="card highlight"><div>Red Bull</div><div class="price">3.00€</div></div>
+<div class="card"><div>Coca-Cola</div><div class="price">3.50€</div></div>
+<div class="card"><div>Sprite</div><div class="price">3.50€</div></div>
+<div class="card"><div>Sok Rauch</div><div class="price">2.90€</div></div>
+<div class="card"><div>Cedevita</div><div class="price">2.70€</div></div>
+</div>
+
+<div id="cocktails" class="section">
+<h2>🍸 Cocktail</h2>
+<div class="card highlight"><div>Vodka Red Bull</div><div class="price">7.90€</div></div>
+<div class="card"><div>Pina Colada</div><div class="price">7.20€</div></div>
+<div class="card"><div>Cuba Libre</div><div class="price">6.60€</div></div>
+<div class="card"><div>Long Island</div><div class="price">8.30€</div></div>
+</div>
+
+<div id="beer" class="section">
+<h2>🍺 Pivo</h2>
+<div class="card"><div>Union 0.5</div><div class="price">3.70€</div></div>
+<div class="card"><div>Laško</div><div class="price">3.90€</div></div>
+<div class="card"><div>Corona</div><div class="price">4.50€</div></div>
+</div>
+
+<div id="wine" class="section">
+<h2>🍷 Vino</h2>
+<div class="card"><div>Malvazija</div><div class="price">2.70€</div></div>
+<div class="card"><div>Cviček</div><div class="price">2.60€</div></div>
+<div class="card"><div>Prosecco</div><div class="price">3.00€</div></div>
+</div>
+
+</div>
+<script>
+function filter(){
+let input=document.querySelector('.search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(c=>{
+let text=c.innerText.toLowerCase();
+c.style.display=text.includes(input)?'flex':'none';
+});
+}
+</script>
+</body>
+</html>
