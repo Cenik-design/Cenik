@@ -1,0 +1,1430 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070a12" />
+  <title>XY Kavarna • Cenik 2026</title>
+  <style>
+    :root {
+      --bg:#06070d; --panel:#0d1220; --panel2:#11192b; --ink:#f6f8ff; --muted:#9da8bd;
+      --line:rgba(255,255,255,.10); --red:#e30613; --gold:#ffd557; --blue:#1e48ff; --pink:#ff2d8e;
+      --radius:24px; --shadow:0 22px 70px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden} body{margin:0;max-width:100%;overflow-x:hidden;background:radial-gradient(circle at 10% 0%,rgba(30,72,255,.28),transparent 32rem),radial-gradient(circle at 90% 8%,rgba(227,6,19,.20),transparent 28rem),linear-gradient(180deg,#06070d 0%,#080c15 48%,#04050a 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+    body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%);pointer-events:none;}
+    .app{width:min(100%,740px);max-width:100%;margin:0 auto;padding:18px 14px 48px;position:relative;overflow-x:hidden;}
+    .hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:34px;padding:22px 18px 18px;min-height:590px;background:linear-gradient(145deg,rgba(13,18,32,.96),rgba(9,12,20,.92));box-shadow:var(--shadow);}
+    .hero:before{content:"";position:absolute;inset:-35% -45% auto auto;width:420px;height:420px;background:radial-gradient(circle,rgba(227,6,19,.55),transparent 62%);filter:blur(10px);}
+    .brand{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:2} .logo{font-weight:950;font-size:clamp(34px,10vw,64px);letter-spacing:-.07em;line-height:.9;color:#fff;text-shadow:0 0 24px rgba(227,6,19,.35)} .logo span{color:var(--red)}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.07);border-radius:999px;padding:9px 12px;color:#d7deed;font-size:13px;white-space:nowrap;backdrop-filter:blur(12px)}
+    .hero h1{position:relative;z-index:2;margin:22px 0 8px;font-size:clamp(34px,13vw,72px);letter-spacing:-.06em;line-height:.84;max-width:520px} .hero h1 b{color:var(--gold);font-weight:950} .lead{position:relative;z-index:2;margin:0;color:#b9c4d9;font-size:16px;max-width:460px;line-height:1.5}
+    .cans{position:absolute;right:-28px;bottom:58px;width:62%;height:430px;z-index:1;pointer-events:none} .cans img{position:absolute;max-height:410px;filter:drop-shadow(0 26px 30px rgba(0,0,0,.55));} .can-original{right:48px;bottom:10px;transform:rotate(3deg);z-index:3} .can-zero{right:150px;bottom:-5px;transform:rotate(-7deg) scale(.92);z-index:2} .can-peach{right:-20px;bottom:-16px;transform:rotate(8deg) scale(.86);z-index:1}
+    .hero-grid{position:absolute;z-index:3;left:14px;right:14px;bottom:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;min-width:0} .rb-offer{min-width:0;overflow:hidden;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:11px 12px;backdrop-filter:blur(16px)} .rb-offer span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:4px} .rb-offer strong{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .rb-offer small{display:block;color:#aeb8ca;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .rb-offer b{display:block;margin-top:8px;color:#fff;font-size:19px}
+    .tools{position:sticky;top:0;z-index:10;margin:14px -14px 0;padding:12px 14px;background:linear-gradient(180deg,rgba(6,7,13,.96),rgba(6,7,13,.78));backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)} .search{display:flex;align-items:center;gap:10px;background:#101725;border:1px solid var(--line);border-radius:18px;padding:12px 14px} .search input{width:100%;background:transparent;border:0;outline:0;color:#fff;font-size:16px} .search svg{flex:0 0 auto;opacity:.65} .chips{display:flex;gap:8px;overflow:auto;padding:12px 0 2px;scrollbar-width:none} .chips::-webkit-scrollbar{display:none} .chip{flex:0 0 auto;text-decoration:none;color:#dce4f6;background:rgba(255,255,255,.06);border:1px solid var(--line);padding:9px 12px;border-radius:999px;font-size:13px}
+    main{display:grid;gap:14px;margin-top:14px} .category-card{background:linear-gradient(180deg,rgba(17,25,43,.92),rgba(13,18,32,.84));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 16px 36px rgba(0,0,0,.22)} .section-heading{display:flex;align-items:center;gap:12px;padding:18px 16px 10px} .section-heading span{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:rgba(227,6,19,.18);color:#ff8890;font-weight:800;font-size:13px} .section-heading h2{margin:0;font-size:22px;letter-spacing:-.035em} ul{list-style:none;margin:0;padding:0 10px 10px} .menu-item{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:14px 8px;border-top:1px solid var(--line)} .menu-item:first-child{border-top:0} .item-copy{min-width:0} h3{margin:0;font-size:16px;line-height:1.15;letter-spacing:-.015em} h3 em{display:inline-flex;vertical-align:middle;margin-left:7px;color:#fff;background:linear-gradient(90deg,var(--red),#ff4c57);border-radius:999px;font-style:normal;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 7px} p{margin:6px 0 0;color:#98a3b8;line-height:1.35;font-size:13px} .item-meta{text-align:right;min-width:84px;display:flex;flex-direction:column;align-items:flex-end;gap:5px} .unit{color:#aeb8ca;font-size:12px} .item-meta strong{font-size:19px;letter-spacing:-.035em;color:#fff;white-space:nowrap} .muted{color:#777!important} .rb-item{margin:6px 0;border-radius:18px;border:1px solid rgba(227,6,19,.35);background:linear-gradient(135deg,rgba(227,6,19,.17),rgba(255,213,87,.08));box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+    .footer{margin-top:18px;border:1px solid var(--line);border-radius:22px;padding:18px;background:rgba(255,255,255,.04);color:#aeb8ca;line-height:1.45;font-size:13px} .footer b{color:#fff} .hide{display:none!important}
+    @media (max-width:520px){.app{padding:10px 10px 34px}.hero{min-height:620px;border-radius:30px;padding:19px 16px;width:100%;max-width:100%}.brand{align-items:flex-start}.logo{font-size:44px}.pill{font-size:12px;padding:8px 10px}.lead{font-size:15px;max-width:245px}.cans{right:-40px;bottom:130px;width:88%;height:360px}.cans img{max-height:350px}.can-original{right:64px}.can-zero{right:150px}.can-peach{right:-14px}.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);left:10px;right:10px}.rb-offer{padding:10px}.rb-offer:nth-child(n+5){display:none}.tools{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}.section-heading h2{font-size:20px}.menu-item{padding:13px 6px}.item-meta{min-width:74px}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="brand"><div class="pill">Cenik 2026</div></div>
+      <h1>XY <b>Kavarna</b></h1>
+      <div class="cans" aria-hidden="true">
+        <img class="can-zero" src="assets/redbull-zero.png" alt="" />
+        <img class="can-peach" src="assets/redbull-peach.png" alt="" />
+        <img class="can-original" src="assets/redbull-original.png" alt="" />
+      </div>
+      <div class="hero-grid">
+        <article class="rb-offer">
+          <span>Najboljša izbira</span>
+          <strong>Red Bull Energy Drink</strong>
+          <small>Energy Drink / Sugarfree / Edition</small>
+          <b>3,50 €</b>
+        </article>
+
+        <article class="rb-offer">
+          <span>Najboljša izbira</span>
+          <strong>2x Vodka Red Bull Energy Drink</strong>
+          <small>2x 0,03l vodka, Red Bull Energy Drink</small>
+          <b>7,90 €</b>
+        </article>
+
+        <article class="rb-offer">
+          <span>Brezalkoholne pijače</span>
+          <strong>Red Bull Energy Drink</strong>
+          <small>0,25l</small>
+          <b>3,00 €</b>
+        </article>
+
+        <article class="rb-offer">
+          <span>Brezalkoholne pijače</span>
+          <strong>Red Bull Sugarfree</strong>
+          <small>0,25l</small>
+          <b>3,00 €</b>
+        </article>
+
+        <article class="rb-offer">
+          <span>Brezalkoholne pijače</span>
+          <strong>Red Bull Edition</strong>
+          <small>0,25l</small>
+          <b>3,00 €</b>
+        </article>
+      </div>
+    </header>
+
+    <nav class="tools">
+      <label class="search" aria-label="Išči po ceniku">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="m21 21-4.3-4.3m1.3-5.2a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="search" type="search" placeholder="Poišči pijačo, kavo, Red Bull ..." autocomplete="off" />
+      </label>
+      <div class="chips"><a class="chip" href="#najboljsa-izbira">Najboljša izbira</a>
+<a class="chip" href="#kofein">Kavni napitki</a>
+<a class="chip" href="#topli-napitki">Topli napitki</a>
+<a class="chip" href="#prigrizki">Prigrizki</a>
+<a class="chip" href="#brezkofein">Brezkofein</a>
+<a class="chip" href="#zitna-kava">Žitna kava</a>
+<a class="chip" href="#hisni-napitki">Hišni napitki</a>
+<a class="chip" href="#brezalkoholne-pijace">Brezalkoholne pijače</a>
+<a class="chip" href="#spritzi">Spritzi</a>
+<a class="chip" href="#cocktail">Cocktail</a>
+<a class="chip" href="#brez-alkohola">Brez alkohola</a>
+<a class="chip" href="#odprta-vina-belo">Odprta vina belo</a>
+<a class="chip" href="#odprta-vina-rdece">Odprta vina rdeče</a>
+<a class="chip" href="#butelke">Butelke</a>
+<a class="chip" href="#sezonske-zimske-dobrote">Sezonske zimske dobrote</a>
+<a class="chip" href="#toceno">Točeno</a>
+<a class="chip" href="#ustekleniceno">Ustekleničeno</a>
+<a class="chip" href="#brezalkoholno-pivo">Brezalkoholno pivo</a>
+<a class="chip" href="#alkoholne-pijace">Alkoholne pijače</a>
+<a class="chip" href="#tobacni-izdelki">Tobačni izdelki</a></div>
+    </nav>
+
+    <main id="menu">
+      <section id="najboljsa-izbira" class="category-card">
+        <div class="section-heading">
+          <span>11</span>
+          <h2>Najboljša izbira</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="kava + cedevita espresso, dolga, z mlekom, cappucino najboljša izbira">
+            <div class="item-copy">
+              <h3>Kava + Cedevita</h3>
+              <p>espresso, dolga, z mlekom, cappucino</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kava + cockta espreso, dolga, z mlekom, cappucino najboljša izbira">
+            <div class="item-copy">
+              <h3>Kava + Cockta</h3>
+              <p>espreso, dolga, z mlekom, cappucino</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="xxl kava z okusom lešnik dvojna kava, mleko, sirup okus najboljša izbira">
+            <div class="item-copy">
+              <h3>XXL kava z okusom Lešnik</h3>
+              <p>dvojna kava, mleko, sirup okus</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,40l</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="xxl kava z okusom vanilia dvojna kava, mleko, sirup okus najboljša izbira">
+            <div class="item-copy">
+              <h3>XXL kava z okusom Vanilia</h3>
+              <p>dvojna kava, mleko, sirup okus</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,40l</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="xxl kava z okusom kokos dvojna kava, mleko, sirup okus najboljša izbira">
+            <div class="item-copy">
+              <h3>XXL kava z okusom Kokos</h3>
+              <p>dvojna kava, mleko, sirup okus</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,40l</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item rb-item" data-name="red bull original/ brez sladkorja/ z okusom najboljša izbira">
+            <div class="item-copy">
+              <h3>Red Bull Energy Drink<em>Red Bull</em></h3>
+              <p>original/ brez sladkorja/ z okusom</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="limonada z okusom lubenica/ jagoda/ bezeg/ pasijonka/ mango/ kokos najboljša izbira">
+            <div class="item-copy">
+              <h3>Limonada z okusom</h3>
+              <p>lubenica/ jagoda/ bezeg/ pasijonka/ mango/ kokos</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,30l</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="aperol spritz  najboljša izbira">
+            <div class="item-copy">
+              <h3>Aperol Spritz</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>6,50 €</strong></div>
+          </li>
+          <li class="menu-item rb-item" data-name="2x vodka red bull 2x 0,03l vodka, red bull najboljša izbira">
+            <div class="item-copy">
+              <h3>2x Vodka Red Bull Energy Drink<em>Red Bull</em></h3>
+              <p>2x 0,03l vodka, Red Bull Energy Drink</p>
+            </div>
+            <div class="item-meta"><strong>7,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="2x gin tonic 2x 0,03l gin, tonic najboljša izbira">
+            <div class="item-copy">
+              <h3>2x Gin Tonic</h3>
+              <p>2x 0,03l gin, tonic</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>7,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="menjava za rastlinsko mleko riževo mleko/ ovseno mleko oat-ly! najboljša izbira">
+            <div class="item-copy">
+              <h3>MENJAVA ZA RASTLINSKO MLEKO</h3>
+              <p>riževo mleko/ ovseno mleko OAT-LY!</p>
+            </div>
+            <div class="item-meta"><strong>0,20 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="kofein" class="category-card">
+        <div class="section-heading">
+          <span>13</span>
+          <h2>Kavni napitki</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="kava  kofein">
+            <div class="item-copy">
+              <h3>Kava</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>1,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="macchiato (la)  kofein">
+            <div class="item-copy">
+              <h3>Macchiato (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>1,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="dolga kava  kofein">
+            <div class="item-copy">
+              <h3>Dolga kava</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>1,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="dvojna kava  kofein">
+            <div class="item-copy">
+              <h3>Dvojna kava</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>3,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kava z mlekom (la)  kofein">
+            <div class="item-copy">
+              <h3>Kava z mlekom (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cappuccino (la)  kofein">
+            <div class="item-copy">
+              <h3>Cappuccino (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kava s smetano (la)  kofein">
+            <div class="item-copy">
+              <h3>Kava s smetano (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="bela kava (la)  kofein">
+            <div class="item-copy">
+              <h3>Bela kava (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="xxl kava z okusom (lešnik/vanila/kokos) dvojna kava, mleko, sirup okus kofein">
+            <div class="item-copy">
+              <h3>XXL kava z okusom (lešnik/vanila/kokos)</h3>
+              <p>dvojna kava, mleko, sirup okus</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,40l</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="affogato (la) kava, sladoled kofein">
+            <div class="item-copy">
+              <h3>Affogato (LA)</h3>
+              <p>kava, sladoled</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="ledena kava(la) kava, mleko, sladoled, smetana chai latte (la chai tiger spice, mleko kofein">
+            <div class="item-copy">
+              <h3>Ledena kava(LA)</h3>
+              <p>kava, mleko, sladoled, smetana Chai Latte (LA Chai tiger spice, mleko</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="matcha latte (la)  kofein">
+            <div class="item-copy">
+              <h3>Matcha Latte (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="jagodna matcha latte (la)  kofein">
+            <div class="item-copy">
+              <h3>Jagodna Matcha Latte (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,30 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="topli-napitki" class="category-card">
+        <div class="section-heading">
+          <span>10</span>
+          <h2>Topli napitki</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="kakav (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Kakav (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kakav s smetano (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Kakav s smetano (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="vroča čokolada (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Vroča čokolada (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="vroča čokolada s smetano (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Vroča čokolada s smetano (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="čaj (sadni, zeliščni, zeleni, črni)  topli napitki">
+            <div class="item-copy">
+              <h3>Čaj (sadni, zeliščni, zeleni, črni)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="čaj z mlekom (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Čaj z mlekom (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="otroški cappuccino (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Otroški cappuccino (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>1,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="med  topli napitki">
+            <div class="item-copy">
+              <h3>Med</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>1,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="smetana (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Smetana (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>1,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="mleko (la)  topli napitki">
+            <div class="item-copy">
+              <h3>Mleko (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>1,00 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="prigrizki" class="category-card">
+        <div class="section-heading">
+          <span>06</span>
+          <h2>Prigrizki</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="toast (gl,la) piščančja prsa, ementaler, ketchup, majoneza prigrizki">
+            <div class="item-copy">
+              <h3>Toast (GL,LA)</h3>
+              <p>piščančja prsa, ementaler, ketchup, majoneza</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>3,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="rogljiček marmelada/čokolada prigrizki">
+            <div class="item-copy">
+              <h3>Rogljiček</h3>
+              <p>marmelada/čokolada</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>3,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sladoled kepica sladoled vanila burbon, smetana prigrizki">
+            <div class="item-copy">
+              <h3>Sladoled kepica</h3>
+              <p>sladoled vanila burbon, smetana</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sladoled (la)  prigrizki">
+            <div class="item-copy">
+              <h3>Sladoled (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>3,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sladoled magnum (la)  prigrizki">
+            <div class="item-copy">
+              <h3>Sladoled Magnum (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sladoled b&amp;j (la)  prigrizki">
+            <div class="item-copy">
+              <h3>Sladoled B&amp;J (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>4,70 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="brezkofein" class="category-card">
+        <div class="section-heading">
+          <span>10</span>
+          <h2>Brezkofein</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="kava  brezkofein">
+            <div class="item-copy">
+              <h3>Kava</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="macchiato (la)  brezkofein">
+            <div class="item-copy">
+              <h3>Macchiato (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="dolga kava  brezkofein">
+            <div class="item-copy">
+              <h3>Dolga kava</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kava z mlekom (la)  brezkofein">
+            <div class="item-copy">
+              <h3>Kava z mlekom (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cappuccino (la)  brezkofein">
+            <div class="item-copy">
+              <h3>Cappuccino (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kava s smetano (la)  brezkofein">
+            <div class="item-copy">
+              <h3>Kava s smetano (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="bela kava (la)  brezkofein">
+            <div class="item-copy">
+              <h3>Bela kava (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="affogato (la) brezkofeinska kava, sladoled brezkofein">
+            <div class="item-copy">
+              <h3>Affogato (LA)</h3>
+              <p>brezkofeinska kava, sladoled</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="xxl kava z okusom dvojna brezkofeinska kava, mleko, sirup okus brezkofein">
+            <div class="item-copy">
+              <h3>XXL kava z okusom</h3>
+              <p>dvojna brezkofeinska kava, mleko, sirup okus</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,40l</span><strong>4,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="ledena kava(la) brezkofeinska kava, mleko, sladoled, smetana brezkofein">
+            <div class="item-copy">
+              <h3>Ledena kava(LA)</h3>
+              <p>brezkofeinska kava, mleko, sladoled, smetana</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,70 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="zitna-kava" class="category-card">
+        <div class="section-heading">
+          <span>03</span>
+          <h2>Žitna kava</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="ječmenova kava  žitna kava">
+            <div class="item-copy">
+              <h3>Ječmenova kava</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="ječmenova kava z mlekom (la)  žitna kava">
+            <div class="item-copy">
+              <h3>Ječmenova kava z mlekom (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="ječmenova bela kava (la)  žitna kava">
+            <div class="item-copy">
+              <h3>Ječmenova bela kava (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,80 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="hisni-napitki" class="category-card">
+        <div class="section-heading">
+          <span>06</span>
+          <h2>Hišni napitki</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="limonada  hišni napitki">
+            <div class="item-copy">
+              <h3>Limonada</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,30l</span><strong>3,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="limonada z okusom lubenica/ jagoda/ bezeg/ pasijonka/ mango/ kokos hišni napitki">
+            <div class="item-copy">
+              <h3>Limonada z okusom</h3>
+              <p>lubenica/ jagoda/ bezeg/ pasijonka/ mango/ kokos</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,30l</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="limonada frizz limonin sok, radenska hišni napitki">
+            <div class="item-copy">
+              <h3>Limonada Frizz</h3>
+              <p>limonin sok, radenska</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,30l</span><strong>4,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="hišni beli ledeni čaj  hišni napitki">
+            <div class="item-copy">
+              <h3>Hišni beli ledeni čaj</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,3l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="hišni beli ledeni čaj z okusom lubenica/ jagoda/ bezeg/ pasijonka/ mango/ kokos hišni napitki">
+            <div class="item-copy">
+              <h3>Hišni beli ledeni čaj z okusom</h3>
+              <p>lubenica/ jagoda/ bezeg/ pasijonka/ mango/ kokos</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,3l</span><strong>3,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="bubble tea jagodne kroglice, jagodni pire hišni napitki">
+            <div class="item-copy">
+              <h3>Bubble TEA</h3>
+              <p>Jagodne kroglice, jagodni pire</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>4,50 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="brezalkoholne-pijace" class="category-card">
+        <div class="section-heading">
+          <span>18</span>
+          <h2>Brezalkoholne pijače</h2>
+        </div>
+        <ul>
+          <li class="menu-item rb-item" data-name="red bull  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Red Bull Energy Drink<em>Red Bull</em></h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,00 €</strong></div>
+          </li>
+          <li class="menu-item rb-item" data-name="red bull sugarfree  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Red Bull Sugarfree<em>Red Bull</em></h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,00 €</strong></div>
+          </li>
+          <li class="menu-item rb-item" data-name="red bull edition  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Red Bull Edition<em>Red Bull</em></h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cockta  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Cockta</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,275l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cockta free  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Cockta Free</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,275l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cedevita  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Cedevita</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>2,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sok rauch (su) jabolko/ breskev/ jagoda/ ananas/ pomaranča brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Sok Rauch (SU)</h3>
+              <p>jabolko/ breskev/ jagoda/ ananas/ pomaranča</p>
+            </div>
+            <div class="item-meta"><span class="unit">0,20l</span><strong>2,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="coca-cola  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Coca-Cola</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="coca-cola zero  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Coca-Cola Zero</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="fanta  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Fanta</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="schweppes bitter  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Schweppes Bitter</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="schweppes tangerina  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Schweppes Tangerina</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="schweppes tonic  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Schweppes Tonic</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sprite  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Sprite</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,25l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="ledeni čaj fuzetea  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Ledeni čaj FUZETEA</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="romerquelle negazirana  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Romerquelle negazirana</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>2,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="romerquelle gazirana  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Romerquelle gazirana</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>2,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="romerquele gazirana z okusom  brezalkoholne pijače">
+            <div class="item-copy">
+              <h3>Romerquele gazirana z okusom</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>2,90 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="spritzi" class="category-card">
+        <div class="section-heading">
+          <span>06</span>
+          <h2>Spritzi</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="aperol spritz (su)  spritzi">
+            <div class="item-copy">
+              <h3>Aperol Spritz (SU)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="limonchelo spritz (su)  spritzi">
+            <div class="item-copy">
+              <h3>Limonchelo Spritz (SU)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="hugo spritz (su)  spritzi">
+            <div class="item-copy">
+              <h3>Hugo Spritz (SU)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="campari spritz (su)  spritzi">
+            <div class="item-copy">
+              <h3>Campari Spritz (SU)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="jagoda spritz (su)  spritzi">
+            <div class="item-copy">
+              <h3>Jagoda Spritz (SU)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sober mango spritz radenska, mango sirup, limonin sok spritzi">
+            <div class="item-copy">
+              <h3>Sober Mango Spritz</h3>
+              <p>radenska, mango sirup, limonin sok</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,50 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="cocktail" class="category-card">
+        <div class="section-heading">
+          <span>08</span>
+          <h2>Cocktail</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="pink gin tonic pink gordons, golberg hibiskus tonic cocktail">
+            <div class="item-copy">
+              <h3>Pink Gin Tonic</h3>
+              <p>Pink Gordons, Golberg hibiskus tonic</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="hendriks&amp;tonic gin hendriks, schweppes tonic cocktail">
+            <div class="item-copy">
+              <h3>Hendriks&amp;Tonic</h3>
+              <p>Gin Hendriks, Schweppes tonic</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>7,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cuba libre captain rum, limona, coca-cola cocktail">
+            <div class="item-copy">
+              <h3>Cuba Libre</h3>
+              <p>Captain rum, limona, Coca-Cola</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sex on the beach(su) vodka, peach three, sok ananas, sirup jagoda cocktail">
+            <div class="item-copy">
+              <h3>Sex on the beach(SU)</h3>
+              <p>Vodka, peach three, sok ananas, sirup jagoda</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>6,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="long island ice tea vodka, rum, tequila, gin, limona, coca-cola cocktail">
+            <div class="item-copy">
+              <h3>Long Island Ice Tea</h3>
+              <p>Vodka, rum, tequila, gin, limona, Coca-Cola</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>8,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="pina colada (la) rum, sok ananas, smetana, kokos cocktail">
+            <div class="item-copy">
+              <h3>Pina Colada (LA)</h3>
+              <p>Rum, sok ananas, smetana, kokos</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>7,20 €</strong></div>
+          </li>
+          <li class="menu-item rb-item" data-name="2x vodka redbull 2x 0,03l vodka, red bull cocktail">
+            <div class="item-copy">
+              <h3>2x Vodka Red Bull Energy Drink<em>Red Bull</em></h3>
+              <p>2x 0,03l vodka, red bull</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>7,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="2x gintonic 2x 0,03l gin, tonic cocktail">
+            <div class="item-copy">
+              <h3>2x GinTonic</h3>
+              <p>2x 0,03l gin, tonic</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>7,90 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="brez-alkohola" class="category-card">
+        <div class="section-heading">
+          <span>03</span>
+          <h2>Brez alkohola</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="sober mango spritz radenska, mango sirup, limonin sok brez alkohola">
+            <div class="item-copy">
+              <h3>Sober Mango Spritz</h3>
+              <p>radenska, mango sirup, limonin sok</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="shirley temple(su) sprite, jagodi pire, limona brez alkohola">
+            <div class="item-copy">
+              <h3>Shirley Temple(SU)</h3>
+              <p>Sprite, jagodi pire, limona</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>4,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="virgin pina colada(la) ananasov sok, kokos, smetana brez alkohola">
+            <div class="item-copy">
+              <h3>Virgin Pina Colada(LA)</h3>
+              <p>Ananasov sok, kokos, smetana</p>
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>4,90 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="odprta-vina-belo" class="category-card">
+        <div class="section-heading">
+          <span>04</span>
+          <h2>Odprta vina belo</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="malvazija  odprta vina belo">
+            <div class="item-copy">
+              <h3>Malvazija</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>2,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="medana belo  odprta vina belo">
+            <div class="item-copy">
+              <h3>Medana belo</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>2,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="rumeni muškat  odprta vina belo">
+            <div class="item-copy">
+              <h3>Rumeni muškat</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>3,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="krasna belo  odprta vina belo">
+            <div class="item-copy">
+              <h3>Krasna belo</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>3,30 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="odprta-vina-rdece" class="category-card">
+        <div class="section-heading">
+          <span>07</span>
+          <h2>Odprta vina rdeče</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="cviček  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>Cviček</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>2,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cabernet sauvignone  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>Cabernet sauvignone</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>2,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="medana rdeče  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>Medana rdeče</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>2,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="krasna rdeče  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>Krasna rdeče</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>3,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="rose querqus  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>Rose Querqus</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>3,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="penina prosecco  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>penina Prosecco</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,10l</span><strong>3,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="penina prosecco  odprta vina rdeče">
+            <div class="item-copy">
+              <h3>penina Prosecco</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,75l</span><strong>21,00 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="butelke" class="category-card">
+        <div class="section-heading">
+          <span>02</span>
+          <h2>Butelke</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="sr. radgonska penina  butelke">
+            <div class="item-copy">
+              <h3>Sr. Radgonska penina</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,20l</span><strong>11,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="sr. radgonska penina  butelke">
+            <div class="item-copy">
+              <h3>Sr. Radgonska penina</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,75l</span><strong>26,00 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="sezonske-zimske-dobrote" class="category-card">
+        <div class="section-heading">
+          <span>04</span>
+          <h2>Sezonske zimske dobrote</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="hot gin  sezonske zimske dobrote">
+            <div class="item-copy">
+              <h3>Hot Gin</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>5,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="hot aperol  sezonske zimske dobrote">
+            <div class="item-copy">
+              <h3>Hot Aperol</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>5,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kuhano vino belo  sezonske zimske dobrote">
+            <div class="item-copy">
+              <h3>Kuhano vino BELO</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kuhano vino rdeče  sezonske zimske dobrote">
+            <div class="item-copy">
+              <h3>Kuhano vino RDEČE</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom</span><strong>3,90 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="toceno" class="category-card">
+        <div class="section-heading">
+          <span>03</span>
+          <h2>Točeno</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="union  točeno">
+            <div class="item-copy">
+              <h3>Union</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,20l</span><strong>2,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="union  točeno">
+            <div class="item-copy">
+              <h3>Union</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,30l</span><strong>3,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="union  točeno">
+            <div class="item-copy">
+              <h3>Union</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>3,70 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="ustekleniceno" class="category-card">
+        <div class="section-heading">
+          <span>15</span>
+          <h2>Ustekleničeno</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="laško  ustekleničeno">
+            <div class="item-copy">
+              <h3>Laško</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="bernard (svetlo/ janter/ temno)  ustekleničeno">
+            <div class="item-copy">
+              <h3>Bernard (svetlo/ janter/ temno)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>4,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="kozel (svetlo/temno)  ustekleničeno">
+            <div class="item-copy">
+              <h3>Kozel (svetlo/temno)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="nefiltrirano svetlo  ustekleničeno">
+            <div class="item-copy">
+              <h3>Nefiltrirano svetlo</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>4,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="breezer  ustekleničeno">
+            <div class="item-copy">
+              <h3>Breezer</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,27l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="somersby jabolko  ustekleničeno">
+            <div class="item-copy">
+              <h3>Somersby jabolko</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>3,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="hard seltzer nord (guava fresh/bezeg/mango)  ustekleničeno">
+            <div class="item-copy">
+              <h3>Hard seltzer NORD (guava fresh/bezeg/mango)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="radler grenivka  ustekleničeno">
+            <div class="item-copy">
+              <h3>Radler Grenivka</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="looblanah ipa  ustekleničeno">
+            <div class="item-copy">
+              <h3>Looblanah IPA</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>5,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="looblanah american ale  ustekleničeno">
+            <div class="item-copy">
+              <h3>Looblanah AMERICAN ALE</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>5,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="tektonic mitzi ipa  ustekleničeno">
+            <div class="item-copy">
+              <h3>Tektonic MITZI IPA</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>5,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="tektonik normal pale ale  ustekleničeno">
+            <div class="item-copy">
+              <h3>Tektonik NORMAL PALE ALE</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>5,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="heineken  ustekleničeno">
+            <div class="item-copy">
+              <h3>Heineken</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>3,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="corona  ustekleničeno">
+            <div class="item-copy">
+              <h3>Corona</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,35l</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="guinness  ustekleničeno">
+            <div class="item-copy">
+              <h3>Guinness</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,44l</span><strong>4,70 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="brezalkoholno-pivo" class="category-card">
+        <div class="section-heading">
+          <span>04</span>
+          <h2>Brezalkoholno pivo</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="hoppy 0.0.  brezalkoholno pivo">
+            <div class="item-copy">
+              <h3>Hoppy 0.0.</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>3,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="radler isotonic 0.0.  brezalkoholno pivo">
+            <div class="item-copy">
+              <h3>Radler Isotonic 0.0.</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,50l</span><strong>3,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="heineken 0.0  brezalkoholno pivo">
+            <div class="item-copy">
+              <h3>Heineken 0.0</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>3,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="malt (ananas/limona)  brezalkoholno pivo">
+            <div class="item-copy">
+              <h3>Malt (ananas/limona)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,33l</span><strong>3,30 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="alkoholne-pijace" class="category-card">
+        <div class="section-heading">
+          <span>24</span>
+          <h2>Alkoholne pijače</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="baileys (la)  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Baileys (LA)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="borovničevec  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Borovničevec</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="campari  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Campari</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="cynar  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Cynar</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="jägermaister  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Jägermaister</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="pelinkovec fructal  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Pelinkovec Fructal</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,60 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="pelinkovec antique  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Pelinkovec ANTIQUE</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="amaro montenegro  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Amaro Montenegro</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="vodka smirnoff (gl)  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Vodka Smirnoff (GL)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="stock  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Stock</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="viljamovka roner  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Viljamovka Roner</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="tequila  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Tequila</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="gin  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Gin</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="captain morgan  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Captain Morgan</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="diplomatico  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Diplomatico</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>5,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="malibu  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Malibu</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>3,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="johnnie walker  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Johnnie Walker</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,30 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="johnnie walker black 12 y.o.  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Johnnie Walker Black 12 y.o.</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>5,10 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="canadian club  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Canadian Club</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="jameson  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Jameson</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,50 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="jack daniels  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Jack Daniels</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>4,70 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="chivas regal 12 y.o.  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Chivas Regal 12 y.o.</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>5,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="lagavulin 16 y.o.  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Lagavulin 16 y.o.</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>7,80 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="camus borderies x.o.  alkoholne pijače">
+            <div class="item-copy">
+              <h3>Camus Borderies x.o.</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">0,03l</span><strong>16,80 €</strong></div>
+          </li>
+        </ul>
+      </section>
+      <section id="tobacni-izdelki" class="category-card">
+        <div class="section-heading">
+          <span>06</span>
+          <h2>Tobačni izdelki</h2>
+        </div>
+        <ul>
+          <li class="menu-item" data-name="west authentic  tobačni izdelki">
+            <div class="item-copy">
+              <h3>West Authentic</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>5,20 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="west (silver/blue)  tobačni izdelki">
+            <div class="item-copy">
+              <h3>West (Silver/Blue)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>5,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="davidoff gold  tobačni izdelki">
+            <div class="item-copy">
+              <h3>Davidoff Gold</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>5,90 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="davidoff reach (silver/blue)  tobačni izdelki">
+            <div class="item-copy">
+              <h3>Davidoff Reach (Silver/Blue)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>5,00 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="gauloises (red/yellow)  tobačni izdelki">
+            <div class="item-copy">
+              <h3>Gauloises (Red/Yellow)</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>5,40 €</strong></div>
+          </li>
+          <li class="menu-item" data-name="jade la jaune  tobačni izdelki">
+            <div class="item-copy">
+              <h3>Jade La Jaune</h3>
+              
+            </div>
+            <div class="item-meta"><span class="unit">kom.</span><strong>5,10 €</strong></div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <b>Oznake alergenov:</b> GL gluten, LA laktoza, SU sulfiti.
+    </footer>
+  </div>
+<script>
+  const input = document.getElementById('search');
+  const sections = [...document.querySelectorAll('.category-card')];
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    sections.forEach(section => {
+      let visible = 0;
+      section.querySelectorAll('.menu-item').forEach(item => {
+        const hit = !q || item.dataset.name.includes(q);
+        item.classList.toggle('hide', !hit);
+        if (hit) visible++;
+      });
+      section.classList.toggle('hide', visible === 0);
+    });
+  });
+</script>
+</body>
+</html>
